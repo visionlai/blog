@@ -1,0 +1,20 @@
+目的：
+　　选择一个分区作为ftp存储文件使用（用户只能访问这个目录），添加一个ftp用户（只有读或写权限，不给登录权限）
+
+　　使用命令创建ftp_test用户, -d 指定home目录为ftp目录，　-s 指定登录shell，这里禁止用户登入
+　　useradd -d /root/ftp -s /usr/sbin/nologin ftp_test
+　　修改/etc/vsftpd.conf文件，限制用户只能访问自己的home目录
+　　chroot_local_user=YES
+　　vsftpd会检测用户的shell是否登记于/etc/shells文件中，而这个文件没有/usr/sbin/nologin,所以登录会失败。需要使用命令echo "/usr/sbin/nologin" >> /etc/shells。
+
+　　其实可以直接使用ftp用户（安装vsftp时创建的用户），设置ftp用户的密码后，只需要将home目录修改为指定的目录即可。（使用其他用户创建ftp目录时，注意权限）
+
+　　高版本的vsftp可能会报这个错误：vsftpd refusing to run with writable root inside chroot()，这个因为vsftpd增强了安全检查，如果用户被限定在了其主目录下，则该用户的主目录不能再具有写权限了！如果检查发现还有写权限，就会报该错误。所以使用chmod -w　/root/ftp　去除写权限。
+
+	或在配置文件上添加allow_writable_chroot=YES，允许上传，同时更改write_enable为YES。
+
+资料：
+　　chroot_local_user #是否将所有用户限制在主目录,YES为启用，NO禁用.(该项默认值是NO,即在安装vsftpd后不做配置的话，ftp用户是可以向上切换到要目录之外的)
+　　chroot_list_enable #是否启动限制用户的名单 YES为启用，NO禁用(包括注释掉也为禁用)
+　　chroot_list_file=/etc/vsftpd/chroot_list　#是否限制在主目录下的用户名单，至于是限制名单还是排除名单，这取决于chroot_local_user的值。
+

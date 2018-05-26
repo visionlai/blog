@@ -1,0 +1,14 @@
+安装vbox时报错，尝试安装内核头文件：
+	apt-get install linux-headers-$(uname -r)
+
+安装报错：
+	E: Unable to locate package linux-headers-4.15.0-kali2-amd64
+	E: Couldn't find any package by glob 'linux-headers-4.15.0-kali2-amd64'
+	E: Couldn't find any package by regex 'linux-headers-4.15.0-kali2-amd64'
+
+到http://http.kali.org/kali/pool/main/l/linux/下载对应内核头文件版本：
+	我下载的是：
+	linux-headers-4.15.0-kali2-common_4.15.11-1kali1_all.deb
+	linux-headers-4.15.0-kali2-amd64_4.15.11-1kali1_amd64.deb
+
+安装完成后，在根据vbox提示执行命令即可。

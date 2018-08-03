@@ -1,0 +1,11 @@
+CLASSPATH 环境变量告诉javac和java程序从哪里找class文件
+
+编译一般使用 javac -d <.class文件存放路径> <.java文件存放路径>
+-d 参数指定.class文件存放路径，自动在路径下生成包目录
+
+运行使用 java <包名>.<类名>
+在 CLASSPATH 中加入 . 路径，同时需要在包所在的路径执行上述命令
+或将包所在完整路径加入 CLASSPATH 变量中，后可在任意目录在执行
+
+打包使用 jar -cvf <.jar包名> <包目录1> <包目录2> ...
+打包成可执行 jar 文件使用 jar -cvfe <.jar包名> <包名.类名格式的main类> <包目录> ...

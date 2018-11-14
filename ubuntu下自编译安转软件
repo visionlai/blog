@@ -1,0 +1,11 @@
+更多资料：
+https://segmentfault.com/a/1190000011200004?share_user=1030000007255638
+
+源码安装步骤：
+    1.从官网下载程序源码包，进入源码包查看INSTALL或README文件内容
+    
+    2.运行 ./configure --prefix=PREFIX ，configure 是一个用于检测操作环境并生成 Makefile 规则文件。默认的 PREFIX 是 /usr/local/。configure 是开发者通常都会写来检测你的 linux 系统等内容的一个文件：是否有适合的编译程序可以编译软件的程序代码；是否已存在软件所需的函数库或其他需要的相关软件；操作系统平台是否适合软件，包括 linux 的内核版本；内核的头定义文件是否存在。个人编译时可以将源码统一放在 /opt 目录下，使用默认的安装路径，使用 make uninstall 卸载软件。也可以安装到 /usr/local/xxx 目录下，安装后可删除源码，删除软件可直接删除 /usr/local/XXX 文件。
+
+    3.执行  make，make 调用 Makefile 作为它的配置文件，将源码编译成可以执行的文件，而这个可执行文件会放置在当前目录下，并没有安装到预定安装的目录。
+    
+    4.执行 make install， make 会根据 Makefile 中关于 install 的选项，将上一步编译完成的数据安装到制定的目录中。

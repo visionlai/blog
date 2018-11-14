@@ -1,0 +1,29 @@
+更多介绍：https://segmentfault.com/a/1190000011463440
+
+dpkg 相关文件：
+  /var/lib/dpkg/available
+    List of available packages.
+  /var/lib/dpkg/status
+    Statuses  of  available packages. This file contains information about whether a package is marked for removing or  not,  whether it  is  installed  or  not,  etc.  See section INFORMATION ABOUT PACKAGES for more info.
+    The status file is backed up daily in /var/backups.  It  can  be
+    useful if it's lost or corrupted due to filesystems troubles.
+  /var/lib/dpkg/info 记安装软件包控制目录的控制信息文件
+
+dpkg 数据库：
+  dpkg 使用文本文件作为数据库来维护系统中软件，包括文件清单, 依赖关系, 软件状态, 等等详细的内容,通常在 /var/lib/dpkg 目录下。 通常在 status 文件中存储软件状态和控制信息。 在 info/ 目录下备份控制文件， 并在其下的 .list 文件中记录安装文件清单， 其下的 .mdasums 保存文件的 MD5 编码。
+
+dpkg 相关查询命令：
+  -l, --list package-name-pattern...
+    List packages matching given pattern.
+  -s, --status package-name...
+    Report status of specified package.
+  -L, --listfiles package-name...
+    List files installed to your system from package-name.
+  -S, --search filename-search-pattern...
+    Search for a filename from installed packages.
+  -p, --print-avail package-name...
+    Display details about package-name, as found in /var/lib/dpkg/available. Users of APT-based frontends
+  should use apt-cache show package-name instead.
+
+  dpkg 包安装过程：
+    dpkg 包包含控制信息和数据信息，控制信息说明版本、依赖等信息，数据信息目录结构对应 /，安装时进行拷贝。

@@ -1,0 +1,5 @@
+apt-key add gpg_file 添加 gpg 密钥到 /etc/apt/trusted.gpg 中
+apt-key list 列举 /etc/apt/trusted.gpg 和 /etc/apt/trusted.gpg.d/ 目录下的密钥
+
+add-apt-repository ppa源 自动添加 gpg 密钥到 /etc/apt/trusted.gpg.d/ 目录下，同时添加源到 /etc/apt/source.list.d/ 目录下
+

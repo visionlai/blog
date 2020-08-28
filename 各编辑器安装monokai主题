@@ -1,0 +1,15 @@
+在vim、vscode、idea、pycharm上统一使用monokai主题，配置方式如下：
+vim：
+	1.在 https://github.com/sickill/vim-monokai/blob/master/colors/monokai.vim 下载主题包
+	2.将Monokai.vim保存到~/.vim/colors下
+	3.配置~/.vimrc文件,添加 syntax enable、colorscheme Monokai 两行
+vscode：
+	preference->color scheme 选择 monokai
+idea：
+	1.在 http://www.riaway.com/uploads/soft/20150601/1433176695.jar 下载 monokai 主题
+	2.file->import  Setting 路径下导入 jar 包
+	3.file->setting->editor->color scheme->color scheme font 配置 size 为 20
+	4.file->setting->color scheme->general->caret row->backgrond 去掉勾
+pycharm：
+	同idea
+
